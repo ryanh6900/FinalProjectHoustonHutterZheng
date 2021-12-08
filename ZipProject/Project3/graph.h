@@ -7,6 +7,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <iostream>
+#include <queue>
 
 //Headers
 #include "city.h"
