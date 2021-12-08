@@ -44,5 +44,8 @@
     <ClInclude Include="dataGeneration.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Textbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
