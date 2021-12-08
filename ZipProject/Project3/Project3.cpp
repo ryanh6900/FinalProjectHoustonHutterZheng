@@ -31,6 +31,7 @@ int main()
 	window.setPosition(centerWindow);
 	window.setKeyRepeatEnabled(true);
 	Textbox textbox1(15, sf::Color::White, true);
+
 	textbox1.setPosition({ 100,100 });
 
 	while (window.isOpen()) {
