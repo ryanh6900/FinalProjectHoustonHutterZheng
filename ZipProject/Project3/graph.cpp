@@ -84,49 +84,57 @@ int graph::dijkstra(string A, string B, vector<string>& path)
 	//iterator
 	unordered_map<string, vector<Edge*>>::iterator it;
 
-	//Set each distance to infinity
-	int V = adjList.size();
-	unordered_map<string, int> dist;
-	unordered_map<string, bool> visited;
-	unordered_map<string, string> pathway;
+	//priority queue
+	priority_queue < pair<unsigned int, string>, vector<pair<unsigned int, string>>, greater<pair<unsigned int, string>>> pq;
 
+	//Set each distance to infinity
+	unordered_map<string, unsigned int> dist;
 	for (it = adjList.begin(); it != adjList.end(); it++)
 	{
 		dist[it->first] = INT_MAX;
-		pathway[it->first] = "";
-		visited[it->first] = false;
 	}
 
+	//Pathway
+	unordered_map<string, string> pathway;
+
+	//push first term
+	pq.push(make_pair(0, A));
 	dist[A] = 0;
-	string minu = A;
-	int min = INT_MAX;
 
-	for (it = adjList.begin(); it != adjList.end(); it++)
+	//Loop till queue is empty
+	while (!pq.empty())
 	{
-		visited[minu] = true;
+		//Get least weight unvisited
+		string minCity = pq.top().second;
+		pq.pop();
 
-		//visit unvisited vertex with smallest start distance
-		for (int j = 0; j < adjList[minu].size(); j++)
+		//iterate through popped node
+		for (int j = 0; j < adjList[minCity].size(); j++)
 		{
-			city* _u = adjList[minu][j]->to;
-			city* _v = adjList[minu][j]->from;
+			city* _u = adjList[minCity][j]->to;
+			city* _v = adjList[minCity][j]->from;
 			string u = _u->cityName + " " + _u->state;
 			string v = _v->cityName + " " + _v->state;
-			int weight = adjList[u][j]->weight;
 
-			if (dist[v] > dist[u] + weight)
+			int weight = adjList[minCity][j]->weight;
+
+			if (dist[u] > dist[v] + weight)
 			{
-				dist[v] = dist[u] + weight;
-
-				if (visited[v] == false && dist[v] < min)
-				{
-					minu = v;
-					min = dist[v];
-				}
-
+				dist[u] = dist[v] + weight;
+				pq.push(make_pair(dist[u], u));
+				pathway[u] = v;
 			}
-
 		}
+	}
+
+	pathway[A] = "NULL";
+	string temp = pathway[B];
+
+	while (temp != "NULL")
+	{
+		path.push_back(temp);
+		cout << temp + " ";
+		temp = pathway[temp];
 	}
 
 	return dist[B];
