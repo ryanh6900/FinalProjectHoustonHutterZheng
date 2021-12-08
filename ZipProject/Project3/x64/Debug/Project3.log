@@ -1,0 +1,6 @@
+﻿  Project3.cpp
+C:\Users\ryan\OneDrive\Desktop\COP3530\FinalProject\ZipProject\Project3\MapProject.h(46,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ryan\OneDrive\Desktop\COP3530\FinalProject\ZipProject\Project3\MapProject.h(51,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ryan\OneDrive\Desktop\COP3530\FinalProject\ZipProject\Project3\MapProject.h(81,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ryan\OneDrive\Desktop\COP3530\FinalProject\ZipProject\Project3\dataGeneration.h(100,22): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+  Project3.vcxproj -> C:\Users\ryan\OneDrive\Desktop\COP3530\FinalProject\ZipProject\x64\Debug\Project3b.exe
