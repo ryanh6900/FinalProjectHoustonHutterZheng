@@ -59,6 +59,7 @@ public:
 			for (int i = 0; i < t.length(); i++) {
 				newT += t[i];
 			}
+			textbox.setString(newT);
 		}
 	}
 	string getText() {
@@ -85,6 +86,22 @@ public:
 					inputLogic(charTyped);
 			}
 		}
+	}
+
+	bool isHovered(sf::RenderWindow& window) {
+		float mouseX = sf::Mouse::getPosition(window).x;
+		float mouseY = sf::Mouse::getPosition(window).y;
+		float btnPosX =textbox.getPosition().x;
+		float btnPosY = textbox.getPosition().y;
+
+		float btnxPosWidth = textbox.getPosition().x +textbox.getLocalBounds().width;
+		float btnyPosHeight =textbox.getPosition().y + textbox.getLocalBounds().height;
+
+		if (mouseX< btnxPosWidth && mouseX> btnPosX && mouseY<btnyPosHeight && mouseY>btnPosY)
+			return true;
+
+		return false;
+
 	}
 private:
 	sf::Text textbox;
