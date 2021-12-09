@@ -153,6 +153,7 @@
     <ClInclude Include="city.h" />
     <ClInclude Include="dataGeneration.h" />
     <ClInclude Include="graph.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="MapProject.h" />
     <ClInclude Include="place.h" />

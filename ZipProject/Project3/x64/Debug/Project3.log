@@ -3,4 +3,14 @@ C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProjec
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\MapProject.h(51,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\MapProject.h(81,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\dataGeneration.h(100,22): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(40,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(41,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+          with
+          [
+              T=int
+          ]
   Project3.vcxproj -> C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\x64\Debug\Project3b.exe

@@ -5,6 +5,7 @@
 #include "graph.h"
 #include "dataGeneration.h"
 #include "Textbox.h"
+#include "Button.h"
 
 //Includes
 #include <string>
@@ -36,8 +37,12 @@ int main()
 
 	Textbox textbox1(15, sf::Color::White, true);
 	textbox1.setFont(arial);
-
+	textbox1.setLimit(true, 12);
 	textbox1.setPosition({ 100,100 });
+
+	Button btn1("Calculate", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	btn1.setPosition({ 100,30 });
+	btn1.setFont(arial);
 
 	while (window.isOpen()) {
 		sf::Event aEvent;
@@ -52,10 +57,17 @@ int main()
 				window.close();
 			case sf::Event::TextEntered:
 				textbox1.typeOn(aEvent);
+				break;
+			case sf::Event::MouseMoved:
+				if (btn1.isMouseOver(window))
+					btn1.setBackColor(sf::Color::White);
+				else
+				 btn1.setBackColor(sf::Color::Green);
 			}
 		}
 		window.clear();
 		textbox1.drawTo(window);
+		btn1.drawTo(window);
 		window.display();
 	}
 	graph* _graph = new graph();
