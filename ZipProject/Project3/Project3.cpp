@@ -30,18 +30,28 @@ int main()
 	window.create(sf::VideoMode(900, 900), "SFML Project", sf::Style::Titlebar | sf::Style::Close);
 	window.setPosition(centerWindow);
 	window.setKeyRepeatEnabled(true);
+
+	sf::Font arial;
+	arial.loadFromFile("arial.ttf");
+
 	Textbox textbox1(15, sf::Color::White, true);
+	textbox1.setFont(arial);
 
 	textbox1.setPosition({ 100,100 });
 
 	while (window.isOpen()) {
-		sf::Event Event;
-		while (window.pollEvent(Event)) {
-			switch (Event.type) {
+		sf::Event aEvent;
+		/*if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+			textbox1.setSelected(true);
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+			textbox1.setSelected(false);*/
+		
+		while (window.pollEvent(aEvent)) {
+			switch (aEvent.type) {
 			case sf::Event::Closed:
 				window.close();
 			case sf::Event::TextEntered:
-				textbox1.typeOn(Event);
+				textbox1.typeOn(aEvent);
 			}
 		}
 		window.clear();

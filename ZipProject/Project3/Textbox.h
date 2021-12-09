@@ -37,7 +37,7 @@ public:
 
 	void setLimit(bool ToF,int lim) {
 		hasLimit = ToF;
-		limit = lim;
+		limit = lim-1;
 	}
 
 	void setSelected(bool sel) {
@@ -45,7 +45,7 @@ public:
 		if (!sel) {
 			string t = text.str();
 			string newT = "";
-			for (int i = 0; i < t.length() - 1; i++) {
+			for (int i = 0; i < t.length(); i++) {
 				newT += t[i];
 			}
 		}
@@ -61,7 +61,7 @@ public:
 	void typeOn(sf::Event input) {
 		if (isSelected) {
 			int charTyped = input.text.unicode;
-			if (charTyped > 128) {
+			if (charTyped < 128) {
 				if (hasLimit) {
 					if (text.str().length() <= limit)
 						inputLogic(charTyped);
