@@ -13,4 +13,14 @@ C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProjec
           [
               T=int
           ]
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(72,58): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(72,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
   Project3.vcxproj -> C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\x64\Debug\Project3b.exe

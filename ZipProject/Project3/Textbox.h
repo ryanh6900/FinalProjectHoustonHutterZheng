@@ -15,10 +15,18 @@ using namespace std;
 class Textbox
 {
 public:
+	//sf::RectangleShape aRect;
+	int sizeX, sizeY;
 	Textbox() {}
 
-	Textbox(int size, sf::Color color, bool sel) {
-		textbox.setCharacterSize(size);
+	Textbox(int _sizeX, int _sizeY, sf::Color color, bool sel) {
+		// define a 120x50 rectangle
+		 //sf::RectangleShape aRect(sf::Vector2f(120, 50));
+		sizeX = _sizeX;
+		sizeY = _sizeY;
+		// change the size to 100x100
+		
+		textbox.setCharacterSize(_sizeX);
 		textbox.setFillColor(color);
 		isSelected = sel;
 		if (sel)

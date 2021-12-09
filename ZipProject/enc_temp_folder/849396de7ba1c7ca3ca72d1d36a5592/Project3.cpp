@@ -40,7 +40,7 @@ int main()
 	textbox1.setLimit(true, 12);
 	textbox1.setPosition({ 100,100 });
 
-	Button btn1("Calculate", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
+	Button btn1("Calculate", { 200,200 }, 20, sf::Color::Green, sf::Color::Black);
 	btn1.setPosition({ 100,30 });
 	btn1.setFont(arial);
 	
