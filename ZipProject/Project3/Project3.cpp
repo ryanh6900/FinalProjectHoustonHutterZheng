@@ -61,19 +61,19 @@ int main()
 	sf::Font arial;
 	arial.loadFromFile("arial.ttf");
 
-	Textbox textbox1(15, 5, sf::Color::Black,true);
+	Textbox textbox1(15, 5, sf::Color::Black,false);
 	textbox1.setFont(arial);
-	textbox1.setLimit(true, 12);
-	textbox1.setPosition({ 300,105 });
+	textbox1.setLimit(true, 100);
+	textbox1.setPosition({ 300,110 });
 
 	Textbox textbox2(15, 5, sf::Color::Black, false);
 	textbox2.setFont(arial);
-	textbox2.setLimit(true, 12);
-	textbox2.setPosition({ 100,150 });
+	textbox2.setLimit(true, 100);
+	textbox2.setPosition({ 300,160 });
 
 
 	sf::RectangleShape rectA(sf::Vector2f(120, 50));
-	rectA.setSize(sf::Vector2f((textbox1.sizeX) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
+	rectA.setSize(sf::Vector2f((textbox1.text.str().length() + 1) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
 	rectA.setFillColor(sf::Color(120, 120, 120));
 	rectA.setPosition({ 300,105 });
 
@@ -134,19 +134,29 @@ int main()
 			firstTime = false;
 		}
 		else {
-			/*if (isMouseOver(window, rectA)) {
+			if (isMouseOver(window, rectA)&& sf::Event::MouseButtonReleased) {
 				textbox1.setSelected(true);
 				textbox2.setSelected(false);
-			}*/
+			}
 
-			/*if (isMouseOver(window, rectB)) {
+			if (isMouseOver(window, rectB)) {
 				textbox2.setSelected(true);
 				textbox1.setSelected(false);
-			}*/
+			}
 			//else if (!textbox1.isHovered(window))
 				//textbox1.setSelected(false);
 			sf::String textCityA = textbox1.getText();
 			sf::String textCityB = textbox2.getText();
+
+			sf::RectangleShape rectA(sf::Vector2f(120, 50));
+			rectA.setSize(sf::Vector2f((textbox1.text.str().length() + .8) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
+			rectA.setFillColor(sf::Color(120, 120, 120));
+			rectA.setPosition({ 300,105 });
+
+			sf::RectangleShape rectB(sf::Vector2f(120, 50));
+			rectB.setSize(sf::Vector2f((textbox2.text.str().length() + .8)*10, textbox2.sizeY * 5)); //(textbox2.text.str().length() + 1) * 10
+			rectB.setFillColor(sf::Color(120, 120, 120));
+			rectB.setPosition({ 300,155 });
 
 			while (window.pollEvent(aEvent)) {
 				switch (aEvent.type) {
