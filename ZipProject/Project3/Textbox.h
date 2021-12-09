@@ -17,6 +17,9 @@ class Textbox
 public:
 	//sf::RectangleShape aRect;
 	int sizeX, sizeY;
+	ostringstream text;
+
+
 	Textbox() {}
 
 	Textbox(int _sizeX, int _sizeY, sf::Color color, bool sel) {
@@ -85,7 +88,6 @@ public:
 	}
 private:
 	sf::Text textbox;
-	ostringstream text;
 	bool isSelected = false;
 	bool hasLimit = false;
 	int limit;

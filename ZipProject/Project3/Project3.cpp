@@ -25,7 +25,8 @@ int main()
 {
 	//Generate graph data from named-places.txt
 	//generateData();
-
+	sf::Text textCityA;
+	sf::Text textCityB;
 	sf::RenderWindow window;
 	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 455, (sf::VideoMode::getDesktopMode().height / 2) - 480);
 	window.create(sf::VideoMode(900, 900), "SFML Project", sf::Style::Titlebar | sf::Style::Close);
@@ -41,7 +42,7 @@ int main()
 	textbox1.setPosition({ 100,100 });
 
 	Button btn1("Calculate", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	btn1.setPosition({ 100,30 });
+	btn1.setPosition({ 100,200 });
 	btn1.setFont(arial);
 	
 	while (window.isOpen()) {
@@ -67,11 +68,13 @@ int main()
 			}
 		}
 		window.clear(sf::Color(200, 255, 255));
-		textbox1.drawTo(window);
+		
 		sf::RectangleShape rectangle(sf::Vector2f(120, 50));
-		rectangle.setSize(sf::Vector2f(textbox1.sizeX, textbox1.sizeY));
+		rectangle.setSize(sf::Vector2f((textbox1.text.str().length()+1)*10, textbox1.sizeY*5));
 		rectangle.setFillColor(sf::Color(120, 120, 120));
+		rectangle.setPosition({ 100,100 });
 		window.draw(rectangle);
+		textbox1.drawTo(window);
 		btn1.drawTo(window);
 		window.display();
 	}
