@@ -139,14 +139,14 @@ int main()
 	column1.setFont(arial);
 	column1.setCharacterSize(32);
 	column1.setFillColor(sf::Color::Black);
-	column1.setPosition(43, 240);
+	column1.setPosition(43, 250);
 	
 
 	sf::Text column2;
 	column2.setFont(arial);
 	column2.setCharacterSize(32);
 	column2.setFillColor(sf::Color::Black);
-	column2.setPosition(468, 240);
+	column2.setPosition(468, 250);
 	
 	
 	sf::Text resultBellman;
@@ -247,6 +247,8 @@ int main()
 					if (calcBtn.isMouseOver(window)) {
 						currA = false;
 						currB = false;
+						//column1.setString("");
+						//column2.setString("");
 						column2.setString("Using Dijkstra:");
 						column1.setString("Using Bellman-Ford:");
 						

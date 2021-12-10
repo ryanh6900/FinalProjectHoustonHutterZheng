@@ -33,7 +33,7 @@ public:
 
 		float xPos = (pos.x + button.getLocalBounds().width/2)-(text.getLocalBounds().width/2);
 		float yPos = (pos.y + button.getLocalBounds().height/2) - (text.getLocalBounds().height/2);
-		text.setPosition(xPos-5, yPos-20);
+		text.setPosition(xPos-5, yPos-10);
 	}
 
 	void drawTo(sf::RenderWindow &window) {
