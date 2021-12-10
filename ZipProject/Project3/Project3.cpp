@@ -167,7 +167,7 @@ int main()
 			sf::RectangleShape Loading(sf::Vector2f(120, 50));
 			
 			Loading.setSize({900,200 }); //(textbox1.text.str().length() + 1) * 10
-			Loading.setFillColor(sf::Color::Yellow);
+			Loading.setFillColor(sf::Color::Cyan);
 			Loading.setPosition({ 0,0 });
 			Loading.move(0, 150);
 			window.clear(sf::Color(200, 255, 255));
