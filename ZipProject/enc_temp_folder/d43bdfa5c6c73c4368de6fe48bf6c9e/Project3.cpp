@@ -15,7 +15,7 @@
 #include <sstream>
 #include <iomanip>
 #include <map>
-
+#include <chrono>
 //Defines
 #define TAB_SIZE 25375;
 
@@ -265,15 +265,24 @@ int main()
 						
 						SolvingB.drawTo(window);
 						window.display();
-						ansBellman = "Total Distance: " + to_string(_graph->BellmanFord(textbox1.getText(), textbox2.getText(), pathBell)) + " miles" + "\n";
+
+						auto startBell = chrono::steady_clock::now();
+						ansBellman = "Total Distance: " + to_string(_graph->BellmanFord(textbox1.getText(), textbox2.getText(), pathBell)) + "km" + "\n";
 						//ansBellman +=  _graph->BellmanFord("Orlando FL", "LansBellmaning MI", path) +"km";
 						ansBellman += "Stops: \n";
 						for (int i = pathBell.size()-2; i>0; i--)
 							ansBellman += pathBell[i] + "\n";
+						resultBellman.setString(ansBellman);
+						auto endBell = chrono::steady_clock::now();
+						cout << "Time taken using Bellman-Ford (in ms): "
+							<< chrono::duration_cast<chrono::milliseconds>(endBell - startBell).count()
+							<< " ms" << endl;
+
 						SolvingD.drawTo(window);
 						window.display();
 
-						ansDijkstra = "Total Distance: " + to_string(_graph->dijkstra(textbox1.getText(), textbox2.getText(), pathDijk)) + " miles" + "\n";
+						auto startD = chrono::steady_clock::now();
+						ansDijkstra = "Total Distance: " + to_string(_graph->dijkstra(textbox1.getText(), textbox2.getText(), pathDijk)) + "km" + "\n";
 						ansDijkstra += "Stops: \n";
 						for (int i = pathDijk.size()-2; i > 0; i--)
 							ansDijkstra += pathDijk[i] + "\n";
@@ -281,9 +290,11 @@ int main()
 							cout<< path[i] << "\n";*/
 						//cout << _graph->dijkstra(textCityA, textCityB, path);
 						//resultBellman.setString(to_string(_graph->BellmanFord(textCityA, textCityB, path)));
-						
-						resultBellman.setString(ansBellman);
 						resultDijkstra.setString(ansDijkstra);
+						auto endD = chrono::steady_clock::now();
+						cout << "Time taken using Bellman-Ford (in ms): "
+							<< chrono::duration_cast<chrono::milliseconds>(endD - startD).count()
+							<< " ms" << endl;
 						//cout << _graph->BellmanFord("Orlando FL", "LansBellmaning MI", path);
 						
 						

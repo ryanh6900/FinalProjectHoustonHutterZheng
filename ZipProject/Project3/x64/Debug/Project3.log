@@ -23,6 +23,6 @@ C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProjec
           [
               T=int
           ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(271,7): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(278,7): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(273,7): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(287,7): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Project3.vcxproj -> C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\x64\Debug\Project3b.exe
