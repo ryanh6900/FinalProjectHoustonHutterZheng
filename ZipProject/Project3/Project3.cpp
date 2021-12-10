@@ -265,7 +265,7 @@ int main()
 						
 						SolvingB.drawTo(window);
 						window.display();
-						ansBellman = "Total Distance: " + to_string(_graph->BellmanFord(textbox1.getText(), textbox2.getText(), pathBell)) + " miles" + "\n";
+						ansBellman = "Total Distance: " + to_string(_graph->BellmanFord(textbox1.getText(), textbox2.getText(), pathBell)) + "km" + "\n";
 						//ansBellman +=  _graph->BellmanFord("Orlando FL", "LansBellmaning MI", path) +"km";
 						ansBellman += "Stops: \n";
 						for (int i = pathBell.size()-2; i>0; i--)
@@ -273,7 +273,7 @@ int main()
 						SolvingD.drawTo(window);
 						window.display();
 
-						ansDijkstra = "Total Distance: " + to_string(_graph->dijkstra(textbox1.getText(), textbox2.getText(), pathDijk)) + " miles" + "\n";
+						ansDijkstra = "Total Distance: " + to_string(_graph->dijkstra(textbox1.getText(), textbox2.getText(), pathDijk)) + "km" + "\n";
 						ansDijkstra += "Stops: \n";
 						for (int i = pathDijk.size()-2; i > 0; i--)
 							ansDijkstra += pathDijk[i] + "\n";
