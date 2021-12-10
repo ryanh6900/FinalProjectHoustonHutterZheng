@@ -133,7 +133,6 @@ int graph::dijkstra(string A, string B, vector<string>& path)
 	while (temp != "NULL")
 	{
 		path.push_back(temp);
-		cout << temp + " ";
 		temp = pathway[temp];
 	}
 
