@@ -2,13 +2,18 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 class Button {
+private:
+	sf::RectangleShape button;
+	sf::Text text;
 public:
+	
 	Button() {
 
 	}
 
 	Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor) {
 		text.setString(t);
+		//text.setOrigin({ 350,250 });
 		text.setFillColor(textColor);
 		text.setCharacterSize(charSize);
 		button.setSize(size);
@@ -28,7 +33,7 @@ public:
 
 		float xPos = (pos.x + button.getLocalBounds().width/2)-(text.getLocalBounds().width/2);
 		float yPos = (pos.y + button.getLocalBounds().height/2) - (text.getLocalBounds().height/2);
-		text.setPosition(xPos, yPos);
+		text.setPosition(xPos-5, yPos-20);
 	}
 
 	void drawTo(sf::RenderWindow &window) {
@@ -50,7 +55,5 @@ public:
 
 		return false;
 	}
-private:
-	sf::RectangleShape button;
-	sf::Text text;
+
 };

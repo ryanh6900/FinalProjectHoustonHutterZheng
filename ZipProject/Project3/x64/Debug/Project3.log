@@ -3,74 +3,24 @@ C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProjec
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\MapProject.h(51,19): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\MapProject.h(81,25): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\dataGeneration.h(100,22): warning C4244: 'initializing': conversion from 'double' to 'unsigned int', possible loss of data
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Textbox.h(92,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Textbox.h(95,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Textbox.h(93,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Textbox.h(96,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(40,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(45,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
           ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(41,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
+C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Button.h(46,16): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
           with
           [
               T=int
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(25,15): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(26,15): warning C4244: 'initializing': conversion from 'T' to 'float', possible loss of data
-          with
-          [
-              T=int
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(76,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(76,64): warning C4244: 'argument': conversion from 'unsigned __int64' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(81,65): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(81,44): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(152,88): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(152,67): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(157,86): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\Project3\Project3.cpp(157,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
-          with
-          [
-              T=float
           ]
   Project3.vcxproj -> C:\Users\ryan\OneDrive\Documents\GitHub\FinalProjectHoustonHutterZheng\ZipProject\x64\Debug\Project3b.exe

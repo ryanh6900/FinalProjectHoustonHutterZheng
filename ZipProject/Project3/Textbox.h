@@ -15,16 +15,18 @@ using namespace std;
 class Textbox
 {
 public:
-	//sf::RectangleShape aRect;
+	sf::RectangleShape aRect;
 	int sizeX, sizeY;
 	ostringstream text;
+	sf::Text textbox;
 
+	Textbox() {
+	
+	}
 
-	Textbox() {}
-
-	Textbox(int _sizeX, int _sizeY, sf::Color color, bool sel) {
+	Textbox(int _sizeX, int _sizeY, sf::Color color, bool sel,sf::RectangleShape _rect) {
 		// define a 120x50 rectangle
-		 //sf::RectangleShape aRect(sf::Vector2f(120, 50));
+		aRect = _rect;
 		sizeX = _sizeX;
 		sizeY = _sizeY;
 		// change the size to 100x100
@@ -88,23 +90,23 @@ public:
 		}
 	}
 
-	bool isHovered(sf::RenderWindow& window) {
+
+	bool isMouseOver(sf::RenderWindow& window) {
 		float mouseX = sf::Mouse::getPosition(window).x;
 		float mouseY = sf::Mouse::getPosition(window).y;
-		float btnPosX =textbox.getPosition().x;
-		float btnPosY = textbox.getPosition().y;
+		float rectPosX = aRect.getPosition().x;
+		float rectPosY = aRect.getPosition().y;
 
-		float btnxPosWidth = textbox.getPosition().x +textbox.getLocalBounds().width;
-		float btnyPosHeight =textbox.getPosition().y + textbox.getLocalBounds().height;
+		float rectxPosWidth = aRect.getPosition().x + aRect.getLocalBounds().width;
+		float rectyPosHeight = aRect.getPosition().y + aRect.getLocalBounds().height;
 
-		if (mouseX< btnxPosWidth && mouseX> btnPosX && mouseY<btnyPosHeight && mouseY>btnPosY)
+		if (mouseX< rectxPosWidth && mouseX> rectPosX && mouseY<rectyPosHeight && mouseY>rectPosY)
 			return true;
 
 		return false;
-
 	}
 private:
-	sf::Text textbox;
+	
 	bool isSelected = false;
 	bool hasLimit = false;
 	int limit;

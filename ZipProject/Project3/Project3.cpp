@@ -21,32 +21,19 @@
 
 using namespace std;
 
-bool isMouseOver(sf::RenderWindow& window, sf::RectangleShape rect) {
-	float mouseX = sf::Mouse::getPosition(window).x;
-	float mouseY = sf::Mouse::getPosition(window).y;
-	float rectPosX = rect.getPosition().x;
-	float rectPosY =rect.getPosition().y;
 
-	float rectxPosWidth = rect.getPosition().x + rect.getLocalBounds().width;
-	float rectyPosHeight = rect.getPosition().y + rect.getLocalBounds().height;
-
-	if (mouseX< rectxPosWidth && mouseX> rectPosX && mouseY<rectyPosHeight && mouseY>rectPosY)
-		return true;
-
-	return false;
-}
 int main()
 {
 	//Generate graph data from named-places.txt
 	//generateData();
 	graph* _graph = new graph();
 	vector<string> path;
+	map<int, Textbox> mp;
 	
-
 	
 	sf::RenderWindow window;
 	sf::Vector2i centerWindow((sf::VideoMode::getDesktopMode().width / 2) - 455, (sf::VideoMode::getDesktopMode().height / 2) - 480);
-	window.create(sf::VideoMode(900, 900), "", sf::Style::Titlebar | sf::Style::Close);
+	window.create(sf::VideoMode(900, 900), "US Trip Calculator", sf::Style::Titlebar | sf::Style::Close);
 	window.setPosition(centerWindow);
 	window.setKeyRepeatEnabled(true);
 	/*::RenderWindow loadingScreen;
@@ -60,27 +47,30 @@ int main()
 
 	sf::Font arial;
 	arial.loadFromFile("arial.ttf");
+	sf::RectangleShape rectA(sf::Vector2f(120, 20));
+	rectA.setSize(sf::Vector2f(400,20 )); //(textbox1.text.str().length() + 1) * 10
+	rectA.setFillColor(sf::Color(200,200, 200));
+	rectA.setPosition({ 300,110 });
 
-	Textbox textbox1(15, 5, sf::Color::Black,false);
+	sf::RectangleShape rectB(sf::Vector2f(120, 20));
+	rectB.setSize(sf::Vector2f(400, 20)); //(textbox2.text.str().length() + 1) * 10
+	rectB.setFillColor(sf::Color(200,200,200));
+	rectB.setPosition({ 300,160 });
+
+	Textbox textbox1(15, 5, sf::Color::Black,false,rectA);
 	textbox1.setFont(arial);
-	textbox1.setLimit(true, 100);
+	textbox1.setLimit(true, 50);
 	textbox1.setPosition({ 300,110 });
+	//mp[1] = textbox1;
 
-	Textbox textbox2(15, 5, sf::Color::Black, false);
+	Textbox textbox2(15, 5, sf::Color::Black, false,rectB);
 	textbox2.setFont(arial);
-	textbox2.setLimit(true, 100);
+	textbox2.setLimit(true, 50);
 	textbox2.setPosition({ 300,160 });
+	//mp[2] = textbox2;
 
+	
 
-	sf::RectangleShape rectA(sf::Vector2f(120, 50));
-	rectA.setSize(sf::Vector2f((textbox1.text.str().length() + 1) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
-	rectA.setFillColor(sf::Color(120, 120, 120));
-	rectA.setPosition({ 300,105 });
-
-	sf::RectangleShape rectB(sf::Vector2f(120, 50));
-	rectB.setSize(sf::Vector2f(textbox2.sizeX * 10, textbox2.sizeY * 5)); //(textbox2.text.str().length() + 1) * 10
-	rectB.setFillColor(sf::Color(120, 120, 120));
-	rectB.setPosition({ 300,155 });
 
 	sf::Text labelCityA, labelCityB;
 	labelCityA.setString("City A: ");
@@ -93,10 +83,6 @@ int main()
 	labelCityB.setFillColor(sf::Color::Black);
 	labelCityB.setPosition({200,150 });
 	
-
-	Button calcBtn("Calculate", { 200,50 }, 20, sf::Color::Green, sf::Color::Black);
-	calcBtn.setPosition({ 250,200 });
-	calcBtn.setFont(arial);
 	sf::Text loadText;
 	loadText.setString("Loading Data for all US Cities...");
 	loadText.setFont(arial);
@@ -104,11 +90,41 @@ int main()
 	loadText.setFillColor(sf::Color::Black);
 	loadText.setPosition({ 50,100 });
 
+	Button calcBtn("Calculate", { 250,85 }, 60, sf::Color::Green, sf::Color::Black);
+	/*Button(std::string t, sf::Vector2f size, int charSize, sf::Color bgColor, sf::Color textColor) {
+		text.setString(t);
+		text.setFillColor(textColor);
+		text.setCharacterSize(charSize);
+		button.setSize(size);
+		button.setFillColor(bgColor);
+	}*/
+	calcBtn.setFont(arial);
+	calcBtn.setPosition({350,250});
+	
+
+	Button Solving("Solving...", { 250,85 }, 60, sf::Color::Yellow, sf::Color::Black);
+	 //(textbox1.text.str().length() + 1) * 10
+	Solving.setFont(arial);
+	Solving.setPosition({350,250});
+
+	/*sf::Text SolveText;
+	SolveText.setString("Solving...");
+	SolveText.setFont(arial);
+	SolveText.setCharacterSize(60);
+	SolveText.setFillColor(sf::Color::Black);
+	SolveText.setPosition({ 250,200 });*/
+
 	bool firstTime = true;
+	bool currA,currB;
+	
+	sf::Text result;
+	result.setFont(arial);
+	result.setCharacterSize(60);
+	result.setFillColor(sf::Color::Black);
+	result.setPosition({ 450,600});
 
 	while (window.isOpen()) {
-		sf::Event aEvent;
-		
+		sf::Event anEvent;
 		if(firstTime) {
 			sf::RectangleShape Loading(sf::Vector2f(120, 50));
 			
@@ -130,60 +146,91 @@ int main()
 			window.display();
 
 			
-			//populateGraph(*_graph);
+			populateGraph(*_graph);
 			firstTime = false;
 		}
 		else {
-			if (isMouseOver(window, rectA)&& sf::Event::MouseButtonReleased) {
-				textbox1.setSelected(true);
-				textbox2.setSelected(false);
-			}
-
-			if (isMouseOver(window, rectB)) {
-				textbox2.setSelected(true);
-				textbox1.setSelected(false);
-			}
-			//else if (!textbox1.isHovered(window))
-				//textbox1.setSelected(false);
+			window.clear(sf::Color(200, 255, 255));
 			sf::String textCityA = textbox1.getText();
 			sf::String textCityB = textbox2.getText();
 
-			sf::RectangleShape rectA(sf::Vector2f(120, 50));
-			rectA.setSize(sf::Vector2f((textbox1.text.str().length() + .8) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
-			rectA.setFillColor(sf::Color(120, 120, 120));
-			rectA.setPosition({ 300,105 });
+			//sf::RectangleShape rectA(sf::Vector2f(120, 50));
+			//rectA.setSize(sf::Vector2f((textbox1.text.str().length() + .8) * 10, textbox1.sizeY * 5)); //(textbox1.text.str().length() + 1) * 10
+			//rectA.setFillColor(sf::Color(120, 120, 120));
+			//rectA.setPosition({ 300,105 });
 
-			sf::RectangleShape rectB(sf::Vector2f(120, 50));
-			rectB.setSize(sf::Vector2f((textbox2.text.str().length() + .8)*10, textbox2.sizeY * 5)); //(textbox2.text.str().length() + 1) * 10
-			rectB.setFillColor(sf::Color(120, 120, 120));
-			rectB.setPosition({ 300,155 });
+			//sf::RectangleShape rectB(sf::Vector2f(120, 50));
+			//rectB.setSize(sf::Vector2f((textbox2.text.str().length() + .8) * 10, textbox2.sizeY * 5)); //(textbox2.text.str().length() + 1) * 10
+			//rectB.setFillColor(sf::Color(120, 120, 120));
+			//rectB.setPosition({ 300,155 });
 
-			while (window.pollEvent(aEvent)) {
-				switch (aEvent.type) {
+	   if(textbox1.isMouseOver(window) && !(textbox2.isMouseOver(window)) && sf::Event::MouseButtonReleased) {
+			   textbox1.setSelected(true);
+			   textbox2.setSelected(false);
+			   currA = true;
+			   currB = false;
+			}
+
+			if(textbox2.isMouseOver(window) && !(textbox1.isMouseOver(window)) && sf::Event::MouseButtonReleased) {
+				
+					textbox1.setSelected(false);
+					textbox2.setSelected(true);
+					currB = true;
+					currA = false;
+			}
+			//else if (!textbox1.isHovered(window))
+				//textbox1.setSelected(false);
+			
+
+			while (window.pollEvent(anEvent)) {
+				switch (anEvent.type) {
 				case sf::Event::Closed:
 					window.close();
 					break;
+
 				case sf::Event::TextEntered:
-					textbox1.typeOn(aEvent);
+					if(currA && !currB)
+					textbox1.typeOn(anEvent);
+					else if(currB && !currA)
+					textbox2.typeOn(anEvent);
 					break;
+
 				case sf::Event::MouseMoved:
 					if (calcBtn.isMouseOver(window))
 						calcBtn.setBackColor(sf::Color::White);
 					else
 						calcBtn.setBackColor(sf::Color::Blue);
 					break;
+
 				case sf::Event::MouseButtonReleased:
 					if (calcBtn.isMouseOver(window)) {
-						cout << _graph->BellmanFord(textCityA, textCityB, path);
-						//cout << _graph->dijkstra("Orlando FL", "Lansing MI", path);
+						std::string ans = "";
+						Solving.drawTo(window);
+						//window.draw(SolveText);
+						window.display();
+						//cout << _graph->BellmanFord(textbox1.getText(), textbox2.getText(), path);
+						ans = to_string(_graph->BellmanFord(textbox1.getText(), textbox2.getText(), path))+ "km";
+						//ans +=  _graph->BellmanFord("Orlando FL", "Lansing MI", path) +"km";
+						for (int i = 0; i < path.size()-1; i++)
+							ans += path[i] + " ";
+						//cout << _graph->dijkstra(textCityA, textCityB, path);
+						//result.setString(to_string(_graph->BellmanFord(textCityA, textCityB, path)));
+						result.setString(ans);
+						//cout << _graph->BellmanFord("Orlando FL", "Lansing MI", path);
+
+						
+
+						//result.setString(to_string(_graph->dijkstra(textCityA, textCityB, path)));
 					}
+					
 
-
+					
 				}
+				
 			}
 
 
-			window.clear(sf::Color(200, 255, 255));
+			
 
 			window.draw(labelCityA);
 			window.draw(labelCityB);
@@ -193,7 +240,7 @@ int main()
 			textbox1.drawTo(window);
 			textbox2.drawTo(window);
 			calcBtn.drawTo(window);
-
+			window.draw(result);
 			window.display();
 
 		}		
